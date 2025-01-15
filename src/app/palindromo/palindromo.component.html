@@ -1,9 +1,15 @@
 <h1>La palabra es: {{palabra}}</h1>
 
 <div>
-    <input type="texto" placeholder="Ingrese una Palabra" [(ngModel)]="palabra">
+    <input type="texto" placeholder="Ingrese una Palabra" [(ngModel)]="palabra" (input)="palabraPalindromo()">
+    
 </div>
-
-@if (palabra !== null) {
-    <p>es palindromo</p>
+@if (palabra.length>0) {
+@if (esPalindormo) {
+    <h2>!Es Palindromo!</h2>
+    
+}
+@if (!esPalindormo) {
+    <h2>!No es Palindromo!</h2>
+}
 }
