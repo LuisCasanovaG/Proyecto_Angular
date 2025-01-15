@@ -1,0 +1,36 @@
+@if (nombre.length>0) {
+<h1>hello {{nombre}}!</h1>
+}
+
+<div>
+    <input type="texto" placeholder="Ingrese un nombre " [(ngModel)]="nombre">
+</div>
+
+@if(nombre==="Carlos"){
+    <div>
+        <b>
+        <h2>Bienvenido al lado oscuro</h2>
+        </b>
+    </div>
+}
+
+<h1>Listado de Nombres</h1>
+<ul>
+    @for (item of listaNombres; track $index) {
+    <li>
+        {{item.nombre}} {{item.apellido}}
+    </li>
+}
+</ul>
+
+@if (mensajeDelHijo.length>0) {
+    <h3>Mensaje del hijo: {{mensajeDelHijo}}</h3>
+}
+<app-world
+    [nombreWorld]=nombre
+    (emisor)="onEmit($event)"
+    
+    >
+</app-world>
+<p></p>
+<button routerLink="/palindromo">Ir al componente World</button>
