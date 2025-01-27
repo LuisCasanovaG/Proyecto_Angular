@@ -1,0 +1,46 @@
+
+<mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title> Pipes de Moneda</mat-card-title>
+      <mat-card-subtitle>Usando pipes para formatear monedas</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+        Nombre del Producto {{producto.nombre}}
+        </p>
+        <p>Precio: {{producto.precio | currency: "EUR"}}</p>
+        <p>Number Pipe: {{producto.precio | number: "1.0-0"}}</p>
+    </mat-card-content>
+    
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title> Pipes de Fecha</mat-card-title>
+      <mat-card-subtitle>Usando pipes para formatear fechas</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+        Nombre de la persona {{persona.nombre | uppercase}}
+        </p>
+        <p>Fecha de Nacimiento: {{persona.fechNacimiento| date: "dd/MM/yyyy"}}</p>
+    </mat-card-content>
+    
+  </mat-card>
+
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title> Pipes de Capicua</mat-card-title>
+      <mat-card-subtitle>Usando pipes para detectar cadenas capicuas o palindromo</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="text" [(ngModel)] ="palabra" placeholder="Ingrese una cadena para analizar"/>
+      @if(palabra.length>0){
+        <p>
+        La palabra {{palabra}} es palindromo {{palabra| capicua}}
+        </p>
+      }
+    </mat-card-content>
+    
+  </mat-card>

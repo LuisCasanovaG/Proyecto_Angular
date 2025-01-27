@@ -1,0 +1,16 @@
+<h2 mat-dialog-title style="text-align: center"><b>{{character.name}}</b></h2>
+<h3 style="text-align: center;">{{character.id}}</h3>
+<mat-dialog-content>
+  <img mat-card-xl-image [src]='character.image' >
+  <p></p>
+        <b>Tipo:</b> {{character.type}}
+        <p></p>
+        <b>Genero:</b> {{character.gender}}
+        <p></p>
+        <b>Locacion:</b> {{character.location.name}}
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</mat-dialog-actions>
