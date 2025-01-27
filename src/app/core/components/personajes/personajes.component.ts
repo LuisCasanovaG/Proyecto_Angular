@@ -10,7 +10,7 @@ import { DialogData } from '../../../shared/components/observables/observables.c
   imports: [MaterialModule, MatDialogModule],
   templateUrl: './personajes.component.html',
   styleUrl: './personajes.component.css',
-  ///standalone:true
+  
 })
 export class PersonajesComponent implements OnInit{
   personajes:any[]=[];
