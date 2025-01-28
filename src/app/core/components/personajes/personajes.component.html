@@ -1,5 +1,6 @@
 
 @for(character of personajes; track character.id){
+  <div class="contenedor_card">
 <mat-card class="example-card" appearance="outlined" (click)="abrirDialog(character)">
     <mat-card-header>
       <mat-card-title-group>
@@ -15,5 +16,11 @@
     </mat-card-content>
     
 </mat-card>
-
+</div>
 }
+
+<button mat-raised-button [disabled]="paginaActual === 1" (click)="paginaInicio()">Inicio</button>
+<button mat-raised-button [disabled]="paginaActual === 1" (click)="paginaAtras()">Atras</button>
+<button mat-raised-button [disabled]="paginaActual === paginaTotal" (click)="paginaSiguiente()">Siguiente</button>
+<button mat-raised-button  [disabled]="paginaActual === paginaTotal" (click)="paginaFinal()">Final</button>
+

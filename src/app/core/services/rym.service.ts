@@ -11,8 +11,9 @@ export class RymService {
   /// se importa el HttpClient
   constructor(private http: HttpClient) { }
 
-  obtenerPersonajes(){
-    return this.http.get(`${this.URLBase}/character`)
+  obtenerPersonajes(pagina: number){
+  
+    return this.http.get(`${this.URLBase}/character/?page=${pagina}`);
   }
 
   obtenerUnPersonaje(id: string){

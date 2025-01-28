@@ -14,16 +14,41 @@ import { DialogData } from '../../../shared/components/observables/observables.c
 })
 export class PersonajesComponent implements OnInit{
   personajes:any[]=[];
+  //paginas:any[]=['https://rickandmortyapi.com/api/character/?page='];
+  //private paginas='https://rickandmortyapi.com/api/character/?page='
+  //paginaTotal:any[]=[];
+  paginaActual: number = 1;
+  paginaTotal: number = 0;
 //data: any;
   
   constructor(private rymService: RymService, public dialog: MatDialog){}
   ngOnInit(): void {
-    this.rymService.obtenerPersonajes().subscribe( (data: any) =>{
-      console.log(data);
-      this.personajes=data.results; ///esto de result se saca de la api
-    } )
-    
+
+    this.cargarPersonajes(this.paginaActual);
+  
   }
+
+
+    cargarPersonajes(pagina: number):void{
+      
+    
+    this.rymService.obtenerPersonajes(pagina).subscribe( (data: any) =>{
+      //console.log(data);
+      this.personajes=data.results; ///esto de result se saca de la api
+      this.paginaTotal=data.info.pages;
+      //console.log("total ", this.paginaTotal);
+    } )
+
+  }
+    /*
+    this.rymService.paginaPersonajes(this.paginaActual).subscribe( (pagina: any) =>{
+      this.paginaTotal=pagina.info.pages;
+      console.log("total ", this.paginaTotal);
+      console.log('Respuesta de la API:', pagina);
+      
+    } )*/
+    
+  
 
   abrirDialog(character: any):void{
     
@@ -38,6 +63,7 @@ export class PersonajesComponent implements OnInit{
     }]
    })*/
     
+
     dialogRef.afterClosed().subscribe(result => {
     console.log('el dialogo fue cerrado con la data: ', result);
     if (result !== undefined) {
@@ -45,13 +71,37 @@ export class PersonajesComponent implements OnInit{
     }
     });
 
-
     
   }
 
-/*
-  onNoClick(): void {
-    this.dialogRef.close();
-  }*/
 
+  paginaInicio(): void {
+    this.paginaActual = 1;
+    this.cargarPersonajes(this.paginaActual);
+  }
+
+  paginaFinal(): void {
+    this.paginaActual = this.paginaTotal;
+    this.cargarPersonajes(this.paginaActual);
+    
+    
+  }
+  paginaSiguiente():void{
+    if(this.paginaActual < this.paginaTotal){
+      this.paginaActual++;
+      this.cargarPersonajes(this.paginaActual);
+      console.log("paginas",this.paginaActual);
+      console.log("paginas total",this.paginaTotal);
+    }
+    
+  }
+  paginaAtras():void{
+    if(this.paginaActual > 1){
+      this.paginaActual--;
+      this.cargarPersonajes(this.paginaActual);
+      
+    }
+    
+  }
+ 
 }

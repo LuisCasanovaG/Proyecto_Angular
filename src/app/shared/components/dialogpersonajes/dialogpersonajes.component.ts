@@ -23,8 +23,10 @@ export class DialogpersonajesComponent implements OnInit{
   character: any;
  
   constructor(private rymservicios: RymService, private dialogRef: MatDialogRef<DialogpersonajesComponent>,@Inject(MAT_DIALOG_DATA) private data: DialogData){}
-
+ 
   ngOnInit(): void {
+
+  
     
     this.character = this.data.character;
     //console.log('Personaje', this.character.status);
